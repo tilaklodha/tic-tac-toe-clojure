@@ -5,6 +5,10 @@
 (defn include? [coll item]
   (some #(= item %) coll))
 
+(defn verify-input []
+  (try (Integer/parseInt (read-line))
+       (catch NumberFormatException e nil)))
+
 (defn pretty-print [x]
   (cond (> x 7) nil
         (= 2 (mod x 3)) "\n-----------\n"
@@ -29,11 +33,10 @@
 
 (defn get-players
   []
-  (println "  1- Human (X) vs. Human (O)")
+  (println "1- Human (X) vs. Human (O)")
   (println)
-  (let [input (read-line)
-        _ (prn input)]
-    (if (and input (include? (range 1 3) (Integer/parseInt input)))
+  (let [input (verify-input)]
+    (if (and input (include? (range 1 2) input))
       (players input)
       (recur))))
 

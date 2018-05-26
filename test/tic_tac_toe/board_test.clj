@@ -21,3 +21,8 @@
 
   (testing "it does noting"
     (is (= nil (pretty-print 8)))))
+
+(deftest verify-user-input
+  (testing "it return a number"
+    (with-redefs [read-line (constantly "4")]
+      (is (= 4 (verify-input))))))
