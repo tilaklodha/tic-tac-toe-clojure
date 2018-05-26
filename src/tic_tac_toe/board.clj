@@ -1,4 +1,5 @@
-(ns tic-tac-toe.board)
+(ns tic-tac-toe.board
+  (:use [tic-tac-toe.game :refer :all]))
 
 (declare players)
 
