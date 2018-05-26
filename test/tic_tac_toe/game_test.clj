@@ -8,3 +8,14 @@
             " " " " " "
             " " " " " "]
            (make-board)))))
+
+(deftest check-empty-spot
+  (testing "return true if spot is empty"
+    (let [board (make-board)]
+      (is (= true (empty-square? board 0)))))
+
+  (testing "return false if spot is not empty"
+    (let [board [" " " " " "
+                 " " " " " "
+                 " " " " "X"]]
+      (is (= false (empty-square? board 8))))))
