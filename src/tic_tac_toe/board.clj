@@ -41,8 +41,14 @@
       (players input)
       (recur))))
 
+(defn get-valid-move [board player]
+  (let [spot ((:mover player) board (:mark player))]
+    (if (valid-move? board spot)
+      (move-on-board board spot (:mark player))
+      (recur board player))))
+
 (def players
-  {1 [{:player-mark "X" :mover human} {:player-mark "O" :mover human}]})
+  {1 [{:mark "X" :mover human} {:mark "O" :mover human}]})
 
 (defn create-board
   []
