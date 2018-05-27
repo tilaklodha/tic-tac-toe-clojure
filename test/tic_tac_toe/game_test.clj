@@ -107,3 +107,10 @@
                  "O" "O" " "
                  " " " " " "]]
       (is (= false (valid-move? board 4))))))
+
+(deftest print-message
+  (testing "when there is winner"
+    (is (= "Winner is X" (message "X"))))
+
+  (testing "when it's a draw"
+    (is (= "Draw!!" (message nil)))))
