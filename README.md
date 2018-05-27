@@ -1,36 +1,44 @@
 # tic-tac-toe
 
-FIXME: description
+Tic Tac Toe in clojure
+
+Give option to play:
+
+  - human vs human
+  - human vs computer
+
 
 ## Installation
 
-Download from http://example.com/FIXME.
+- Requires Java
 
-## Usage
+### Setup leiningen
 
-FIXME: explanation
+```
+$ brew install leiningen
+```
 
-    $ java -jar tic-tac-toe-0.1.0-standalone.jar [args]
 
-## Options
+## Publish jar
 
-FIXME: listing of options this app accepts.
+```
+$ java -jar tic-tac-toe-0.1.0-standalone.jar 
+```
 
-## Examples
+## Run Game
 
-...
+`lein run`
 
-### Bugs
+## Run tests
 
-...
+`lein test`
 
-### Any Other Sections
-### That You Think
-### Might be Useful
+## Code-coverage
+`CLOVERAGE_VERSION=1.0.11-SNAPSHOT lein cloverage --codecov`
 
 ## License
 
-Copyright © 2018 FIXME
+Copyright © 2018 www.tilaklodha.com
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
