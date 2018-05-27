@@ -31,7 +31,7 @@
   [board]
   (some #(winner-on-one-set board %) winning-sets))
 
-(defn game-over?
+(defn game-finished?
   [board]
   (boolean (or (winner board) (full? board))))
 

@@ -30,7 +30,7 @@
                  "O" "X" "O"]]
       (is (= true (full? board))))))
 
-(deftest prints-winner
+(deftest print-winner
   (testing "prints winner or nil"
     (let [board ["X" "X" "X"
                  "O" "O" " "
@@ -81,19 +81,19 @@
     (let [board ["X" "X" "X"
                  "O" "O" " "
                  " " " " " "]]
-      (is (= true (game-over? board)))))
+      (is (= true (game-finished? board)))))
 
   (testing "if board is full"
     (let [board ["X" "O" "X"
                  "O" "O" "X"
                  "X" "X" "O"]]
-      (is (= true (game-over? board)))))
+      (is (= true (game-finished? board)))))
 
   (testing "if-board-is-empty"
     (let [board ["X" "X" "O"
                  "O" "X" " "
                  " " " " " "]]
-      (is (= false (game-over? board))))))
+      (is (= false (game-finished? board))))))
 
 (deftest check-valid-move
   (testing "if move is valid"

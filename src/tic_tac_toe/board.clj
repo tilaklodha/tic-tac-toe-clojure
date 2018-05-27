@@ -27,7 +27,7 @@
   (println)
   (println "Pick your spot (1-9): ")
   (flush)
-  (let [input (read-line)]
+  (let [input (verify-input)]
     (if (and input (include? (range 1 10) input))
       (dec input)
       (recur board mark))))
