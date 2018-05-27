@@ -35,6 +35,12 @@
   [board]
   (boolean (or (winner board) (full? board))))
 
+(defn ^:dynamic message
+  [winner]
+  (if (nil? winner)
+    (str "Draw!!")
+    (str "Winner is " winner)))
+
 (defn move-on-board
   [board spot player]
   (if (= " " (board spot))

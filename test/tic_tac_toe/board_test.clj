@@ -1,8 +1,16 @@
 (ns tic-tac-toe.board-test
-  (:require [clojure.test :refer :all]
-            [tic-tac-toe.board :refer :all]))
+  (:use [clojure.test :refer :all]
+            [tic-tac-toe.board :refer :all]
+            [tic-tac-toe.game :only [message]]))
+(def actual-winner (ref :not-over))
 
-(deftest create-new-board
+(defn mock-message [winner]
+  (dosync (ref-set actual-winner winner)))
+
+(defn make-input [coll]
+  (apply str (interleave coll (repeat "\n"))))
+
+(deftest prints-new-board
   (testing "it creates a new board"
     (is (=  " 1 | 2 | 3 \n-----------\n 4 | 5 | 6 \n-----------\n 7 | 8 | 9 " (print-board (vec (range 1 10)))))))
 
@@ -55,3 +63,10 @@
         (is (= ["X" "X" "X"
                 "O" "O" " "
                 " " " " " "]) (get-valid-move board player))))))
+
+(deftest full-game
+  (binding [message mock-message]
+    (with-in-str
+      (make-input '(1 1 9 2 8 3))
+      (start-game)
+      (is (= "X" @actual-winner)))))

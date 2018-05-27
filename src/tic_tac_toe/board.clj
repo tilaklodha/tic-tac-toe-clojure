@@ -50,10 +50,18 @@
 (def players
   {1 [{:mark "X" :mover human} {:mark "O" :mover human}]})
 
-(defn create-board
-  []
-  (println "Use numbers accordingly to play")
-  (println (print-board (vec (range 1 10))))
-  (let [[playerOne playerTwo] (get-players)]
-    (println playerOne)
-    (println playerTwo)))
+(defn start-game
+  ([]
+    (println "Use numbers accordingly to play")
+    (println (print-board (vec (range 1 10))))
+    (let [[playerOne playerTwo] (get-players)]
+      (start-game (make-board) playerOne playerTwo)))
+  ([board playerOne playerTwo]
+   (if (game-finished? board)
+     (do
+       (println "\n" (message (winner board)) "\n")
+       (println (print-board board)))
+     (do
+       (println (str "Turn " (:mark playerOne)))
+       (recur
+         (get-valid-move board playerOne) playerTwo playerOne)))))
