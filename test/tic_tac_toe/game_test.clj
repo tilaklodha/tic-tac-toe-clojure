@@ -81,7 +81,7 @@
     (let [board ["X" "X" "X"
                  "O" "O" " "
                  " " " " " "]]
-      (is (= "X" (game-over? board)))))
+      (is (= true (game-over? board)))))
 
   (testing "if board is full"
     (let [board ["X" "O" "X"

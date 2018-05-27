@@ -33,7 +33,7 @@
 
 (defn game-over?
   [board]
-  (or (winner board) (full? board)))
+  (boolean (or (winner board) (full? board))))
 
 (defn move-on-board
   [board spot player]
