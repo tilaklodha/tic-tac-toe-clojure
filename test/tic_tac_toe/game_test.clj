@@ -66,3 +66,25 @@
                  [" " " " "X"
                   "O" "X" "O"
                   "X" " " " "])))
+
+(deftest move-player-on-board
+  (testing "move X on board"
+    (let [board ["X" "X" "X"
+                 "O" "O" " "
+                 " " " " " "]]
+      (is (= ["X" "X" "X"
+              "O" "O" "X"
+              " " " " " "] (move-on-board board 5 "X"))))))
+
+(deftest check-valid-move
+  (testing "if move is valid"
+    (let [board ["X" "X" "X"
+                 "O" "O" " "
+                 " " " " " "]]
+      (is (= true (valid-move? board 5)))))
+
+  (testing "if move is invalid"
+    (let [board ["X" "X" "X"
+                 "O" "O" " "
+                 " " " " " "]]
+      (is (= false (valid-move? board 4))))))

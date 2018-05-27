@@ -30,3 +30,12 @@
 (defn winner
   [board]
   (some #(winner-on-one-set board %) winning-sets))
+
+(defn move-on-board
+  [board spot player]
+  (if (= " " (board spot))
+    (assoc board spot player)))
+
+(defn valid-move? [board spot]
+  (try (= (board spot) " ")
+       (catch Exception e false)))
