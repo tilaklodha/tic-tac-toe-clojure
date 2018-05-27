@@ -31,6 +31,10 @@
   [board]
   (some #(winner-on-one-set board %) winning-sets))
 
+(defn game-over?
+  [board]
+  (or (winner board) (full? board)))
+
 (defn move-on-board
   [board spot player]
   (if (= " " (board spot))

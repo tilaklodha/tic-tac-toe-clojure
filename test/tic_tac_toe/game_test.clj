@@ -76,6 +76,25 @@
               "O" "O" "X"
               " " " " " "] (move-on-board board 5 "X"))))))
 
+(deftest game-over-or-not
+  (testing "if board has winner"
+    (let [board ["X" "X" "X"
+                 "O" "O" " "
+                 " " " " " "]]
+      (is (= "X" (game-over? board)))))
+
+  (testing "if board is full"
+    (let [board ["X" "O" "X"
+                 "O" "O" "X"
+                 "X" "X" "O"]]
+      (is (= true (game-over? board)))))
+
+  (testing "if-board-is-empty"
+    (let [board ["X" "X" "O"
+                 "O" "X" " "
+                 " " " " " "]]
+      (is (= false (game-over? board))))))
+
 (deftest check-valid-move
   (testing "if move is valid"
     (let [board ["X" "X" "X"
