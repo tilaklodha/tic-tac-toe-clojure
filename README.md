@@ -25,6 +25,12 @@ $ brew install leiningen
 $ java -jar tic-tac-toe-0.1.0-standalone.jar 
 ```
 
+## Install dependencies
+
+```
+$ lein deps
+```
+
 ## Run Game
 
 `lein run`
