@@ -18,8 +18,9 @@
     (let [board [" " " " " "
                  " " " " " "
                  " " " " "X"]]
-      (is (= false (empty-square? board 8)))))
+      (is (= false (empty-square? board 8))))))
 
+(deftest check-if-board-is-full-or-not
   (testing "if board is not full"
     (is (= false (full? (make-board)))))
 
@@ -28,3 +29,40 @@
                  "O" "X" "O"
                  "O" "X" "O"]]
       (is (= true (full? board))))))
+
+(deftest prints-winner
+  (testing "prints winner or nil"
+    (let [board ["X" "X" "X"
+                 "O" "O" " "
+                 " " " " " "]
+          winner-set [0 1 2]
+          non-winner-set [4 6 8]]
+      (is (= "X" (winner-on-one-set board winner-set)))
+      (is (= nil (winner-on-one-set board non-winner-set)))))
+
+  (testing "prints X when X wins for all combinations"
+    (are [board] (= "X" (winner board))
+                 ["X" "X" "X"
+                  "O" "O" " "
+                  " " " " " "]
+                 ["O" "O" " "
+                  "X" "X" "X"
+                  " " " " " "]
+                 ["O" "O" " "
+                  " " " " " "
+                  "X" "X" "X"]
+                 ["X" "O" " "
+                  "X" "O" " "
+                  "X" " " " "]
+                 ["O" "X" " "
+                  "O" "X" " "
+                  " " "X" " "]
+                 ["O" " " "X"
+                  "O" " " "X"
+                  " " " " "X"]
+                 ["X" " " " "
+                  "O" "X" "O"
+                  " " " " "X"]
+                 [" " " " "X"
+                  "O" "X" "O"
+                  "X" " " " "])))
