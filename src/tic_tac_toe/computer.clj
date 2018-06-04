@@ -33,3 +33,7 @@
     (child-scored-boards board mark depth)))
 
 (def memoized-best-scored-board (memoize best-scored-board))
+
+(defn computer [board mark]
+  (let [best-board (memoized-best-scored-board board mark 0)]
+    (:move best-board)))

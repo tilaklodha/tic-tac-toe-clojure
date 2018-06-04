@@ -26,3 +26,17 @@
           move 0]
       (is (= {:score 6 :move 0} (score-board board move mark depth))))))
 
+(deftest test-computer-blocks-player-win
+  (are [move board] (= move (computer board "X"))
+                    1 [" " " " " "
+                       "X" "O" "X"
+                       " " "O" " "]
+                    4 ["O" " " " "
+                       " " " " "X"
+                       "X" "O" "O"]
+                    4 ["O" " " " "
+                       " " " " "X"
+                       " " " " "O"]
+                    6 ["O" "X" " "
+                       " " "X" " "
+                       " " "O" "O"]))
