@@ -6,6 +6,8 @@ Give option to play:
 
   - human vs human
   - human vs computer
+  - computer vs human
+  - computer vs computer
 
 
 ## Installation
@@ -22,7 +24,7 @@ $ brew install leiningen
 ## Publish jar
 
 ```
-$ java -jar tic-tac-toe-0.1.0-standalone.jar 
+$ lein uberjar
 ```
 
 ## Install dependencies
@@ -40,7 +42,8 @@ $ lein deps
 `lein test`
 
 ## Code-coverage
-`CLOVERAGE_VERSION=1.0.11-SNAPSHOT lein cloverage --codecov`
+`lein cloverage`
+`open target/coverage/index.html`
 
 ## License
 

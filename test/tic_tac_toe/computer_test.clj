@@ -24,7 +24,7 @@
           mark "X"
           depth 0
           move 0]
-      (is (= {:score 6 :move 0} (score-board board move mark depth))))))
+      (is (= {:score 10 :move 0} (score-board board move mark depth))))))
 
 (deftest test-computer-blocks-player-win
   (are [move board] (= move (computer board "X"))
