@@ -7,3 +7,22 @@
   (testing "generate score with move"
     (is (= {:score 10 :move 2} (make-score-board 10 2)))))
 
+(deftest get-optimal-move
+  (testing "computer calculate score if next move wins"
+    (let [board [" " "O" " "
+                 " " "X" " "
+                 " " "O" "X"]
+          mark "X"
+          depth 0
+          move 0]
+      (is (= {:score 10 :move 0} (score-board board move mark depth)))))
+
+  (testing "computer calculate score for next move if no win"
+    (let [board [" " "O" "X"
+                 " " "X" " "
+                 " " "O" "X"]
+          mark "X"
+          depth 0
+          move 0]
+      (is (= {:score 6 :move 0} (score-board board move mark depth))))))
+
