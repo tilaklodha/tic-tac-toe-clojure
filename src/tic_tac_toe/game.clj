@@ -49,3 +49,24 @@
 (defn valid-move? [board spot]
   (try (= (board spot) " ")
        (catch Exception e false)))
+
+(defn next-mark
+  [mark]
+  (if (= "X" mark)
+    "O"
+    "X"))
+
+(defn- indexed
+  [coll]
+  (map vector coll
+       (iterate inc 0)))
+
+(defn- index-filter
+  [pred coll]
+  (for [[spot i]
+        (indexed coll) :when
+        (pred spot)]
+    i))
+
+(defn empty-squares [board]
+  (index-filter empty-square? board))
