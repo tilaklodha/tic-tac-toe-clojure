@@ -35,9 +35,10 @@
 (defn get-players
   []
   (println "1- Human (X) vs. Human (O)")
+  (println "2- Computer (X) vs. Human (O)")
   (println)
   (let [input (verify-input)]
-    (if (and input (include? (range 1 2) input))
+    (if (and input (include? (range 1 3) input))
       (players input)
       (recur))))
 
@@ -48,7 +49,8 @@
       (recur board player))))
 
 (def players
-  {1 [{:mark "X" :mover human} {:mark "O" :mover human}]})
+  {1 [{:mark "X" :mover human} {:mark "O" :mover human}]
+   2 [{:mark "X" :mover computer} {:mark "O" :mover human}]})
 
 (defn start-game
   ([]
